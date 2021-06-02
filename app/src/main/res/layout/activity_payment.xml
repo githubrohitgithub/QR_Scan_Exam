@@ -38,13 +38,13 @@
         android:src="@drawable/ic_debit_card"/>
 
     <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:text="Pay now"
         android:layout_margin="10dp"
         android:layout_marginBottom="30dp"
         android:layout_centerHorizontal="true"
         android:textColor="@color/white"
-        android:background="@drawable/button"
+        android:background="@drawable/button_3d"
         android:layout_below="@+id/image"
         android:id="@+id/pay"
         android:layout_height="wrap_content"

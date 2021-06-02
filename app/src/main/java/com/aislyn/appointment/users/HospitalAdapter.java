@@ -41,7 +41,7 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Viewho
     @Override
     public void onBindViewHolder(@NonNull HospitalAdapter.Viewholder holder, int position) {
 
-        holder.id.setText("Hospital id:- "+ hospitalList.get(position).getId());
+        holder.id.setText("Hospital id:- "+ hospitalList.get(position).getHospital_id());
         holder.name.setText("Hospital Name :- "+ hospitalList.get(position).getName());
         holder.address.setText("Hospital Address :- "+ hospitalList.get(position).getAddress());
         holder.phone.setText("Hospital Phone. :- "+ hospitalList.get(position).getPhone());

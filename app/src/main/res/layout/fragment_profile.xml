@@ -96,7 +96,7 @@
                        android:layout_marginTop="10dp"
                        android:layout_marginRight="30dp"
                        android:textColor="#fff"
-                       android:background="#3BB5EC"
+                       android:background="@drawable/button_3d"
                        android:layout_marginBottom="20dp"
                        android:id="@+id/btnupdatepassword"
                        android:text="Update your password"/>

@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:padding="10dp"
-        android:background="@drawable/doctorsbg"
+        android:background="@drawable/frame_3d"
         android:layout_height="wrap_content">
 
 
@@ -107,10 +107,12 @@
             />
 
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
+            android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:textAllCaps="false"
+            android:background="@drawable/button_3d"
             android:layout_below="@+id/doctor_specialist"
             android:fontFamily="@font/gotham"
             android:id="@+id/book_apointment"/>
