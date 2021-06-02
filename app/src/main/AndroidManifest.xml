@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.aislyn.appointment">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_doctor_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_doctor_logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.RetrofitAppFull"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".HospitalListActivity"></activity>
+        <activity android:name=".LandingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".PaymentActivity" />
+        <activity android:name=".users.Activities.HomeActivity" />
+        <activity android:name=".users.Activities.MainActivityy" />
+        <activity android:name=".users.Activities.LoginActivity" />
+        <activity android:name=".doctor.Activities.DRHomeActivity" />
+        <activity android:name=".doctor.Activities.MainActivityy" />
+        <activity android:name=".doctor.Activities.LoginActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

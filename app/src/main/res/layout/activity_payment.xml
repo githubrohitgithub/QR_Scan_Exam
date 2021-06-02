@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/docbggradient"
+    android:layout_height="match_parent"
+    tools:context=".PaymentActivity">
+
+    <View
+        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="34dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_side_right_bg" />
+
+    <View
+        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_width="34dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_side_left_bg" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/image1"
+        android:src="@drawable/ic_doctor"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/image1"
+        android:id="@+id/image"
+        android:src="@drawable/ic_debit_card"/>
+
+    <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+        android:layout_width="match_parent"
+        android:text="Pay now"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="30dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:background="@drawable/button"
+        android:layout_below="@+id/image"
+        android:id="@+id/pay"
+        android:layout_height="wrap_content"
+       />
+
+</RelativeLayout>
