@@ -12,7 +12,7 @@
         android:gravity="center"
         android:padding="10dp"
         android:layout_margin="10dp"
-        android:background="@drawable/border"
+        android:background="@drawable/frame_3d"
         android:layout_height="wrap_content"
         >
 
@@ -27,6 +27,7 @@
                 android:layout_width="100dp"
                 android:textSize="12sp"
                 android:gravity="center"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:text="Hospital ID: "/>
 
@@ -37,7 +38,7 @@
                 android:textSize="15sp"
                 android:fontFamily="@font/gotham"
                 android:inputType="text"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textColorHint="#f2f2f2"
                 android:layout_height="60dp" />
 
@@ -49,12 +50,14 @@
             android:orientation="horizontal"
             android:id="@+id/l2"
             android:layout_below="@+id/l1"
+
             android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="100dp"
                 android:textSize="12sp"
                 android:gravity="center"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:text="Hospital Name : "/>
 
@@ -66,7 +69,7 @@
                 android:textSize="15sp"
                 android:fontFamily="@font/gotham"
                 android:inputType="text"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textColorHint="#f2f2f2"
                 android:layout_height="60dp" />
         </LinearLayout>
@@ -84,6 +87,7 @@
                 android:layout_width="100dp"
                 android:textSize="12sp"
                 android:gravity="center"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:text="Hospital address :- "/>
 
@@ -93,8 +97,8 @@
                 android:textAllCaps="false"
                 android:textSize="15sp"
                 android:fontFamily="@font/gotham"
-                android:inputType="text"
-                android:textColor="@color/black"
+                android:inputType="textPostalAddress"
+                android:textColor="@color/white"
                 android:textColorHint="#f2f2f2"
                 android:layout_height="60dp" />
 
@@ -111,6 +115,7 @@
                 android:layout_width="100dp"
                 android:textSize="12sp"
                 android:gravity="center"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:text="Hospital phone :- "/>
 
@@ -121,7 +126,7 @@
                 android:textSize="15sp"
                 android:fontFamily="@font/gotham"
                 android:inputType="phone"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textColorHint="#f2f2f2"
                 android:layout_height="60dp" />
 
