@@ -51,6 +51,7 @@ public class DashboardFragment extends Fragment {
     TextView nodata;
     ProgressDialog progressDoalog;
     ShimmerFrameLayout layout;
+    TextView username;
     public static ArrayList<FetchAllBooked> fetch_all_booked_arraylist = new ArrayList<>();
 
     @Override
@@ -73,10 +74,13 @@ public class DashboardFragment extends Fragment {
         new requestallbooked().execute("http://aislyn.in/DRappointment/fetchappointments.php?filter="+sharedPrefmanager.getuser().getId()+"&name="+sharedPrefmanager.getuser().getUsername());
 
         listView = view.findViewById(R.id.myListView);
+        username = view.findViewById(R.id.username);
         nodata = view.findViewById(R.id.nodata);
         layout=view.findViewById(R.id.shimmer);
         adapter = new AdapterFetchBooked(getContext(), fetch_all_booked_arraylist);
         listView.setAdapter(adapter);
+
+        username.append(sharedPrefmanager.getuser().getUsername());
 
         progressDoalog = new ProgressDialog(getContext());
         progressDoalog.setMax(100);

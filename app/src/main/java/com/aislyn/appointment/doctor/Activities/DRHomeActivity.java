@@ -118,6 +118,12 @@ public class DRHomeActivity extends AppCompatActivity implements BottomNavigatio
 
 
     }
+    private void adminlogout() {
+
+        drSharedPrefmanager.logout();
+
+
+    }
 
     private void deleteaccount() {
 
@@ -156,5 +162,14 @@ public class DRHomeActivity extends AppCompatActivity implements BottomNavigatio
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if(drSharedPrefmanager.getuser().getId()==9){
+            adminlogout();
+        }
     }
 }
