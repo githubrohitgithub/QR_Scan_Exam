@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.online.exams">
+    package="com.rohit.onlne_exams">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,33 +13,33 @@
         android:theme="@style/Theme.RetrofitAppFull"
         android:usesCleartextTraffic="true">
         <activity
-            android:name="com.online.exams.teacher.Activities.Question_set_change"
+            android:name="com.rohit.onlne_exams.teacher.Activities.Question_set_change"
             android:exported="false" />
         <activity
-            android:name="com.online.exams.teacher.Activities.StudentResultActivity"
+            android:name="com.rohit.onlne_exams.teacher.Activities.StudentResultActivity"
             android:exported="false" />
         <activity
-            android:name="com.online.exams.student.Activities.ResultActivity"
+            android:name="com.rohit.onlne_exams.student.Activities.ResultActivity"
             android:exported="false" />
         <activity
-            android:name="com.online.exams.student.Activities.Starttest"
+            android:name="com.rohit.onlne_exams.student.Activities.Starttest"
             android:exported="true" />
         <activity
-            android:name="com.online.exams.teacher.Activities.QuestionAddMainActivity"
+            android:name="com.rohit.onlne_exams.teacher.Activities.QuestionAddMainActivity"
             android:exported="false" />
-        <activity android:name="com.online.exams.LandingActivity">
+        <activity android:name="com.rohit.onlne_exams.LandingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.online.exams.student.Activities.SHomeActivity" />
-        <activity android:name="com.online.exams.student.Activities.SMainActivityy" />
-        <activity android:name="com.online.exams.student.Activities.SLoginActivity" />
-        <activity android:name="com.online.exams.teacher.Activities.THomeActivity" />
-        <activity android:name="com.online.exams.teacher.Activities.TMainActivityy" />
-        <activity android:name="com.online.exams.teacher.Activities.TLoginActivity" />
+        <activity android:name="com.rohit.onlne_exams.student.Activities.SHomeActivity" />
+        <activity android:name="com.rohit.onlne_exams.student.Activities.SMainActivityy" />
+        <activity android:name="com.rohit.onlne_exams.student.Activities.SLoginActivity" />
+        <activity android:name="com.rohit.onlne_exams.teacher.Activities.THomeActivity" />
+        <activity android:name="com.rohit.onlne_exams.teacher.Activities.TMainActivityy" />
+        <activity android:name="com.rohit.onlne_exams.teacher.Activities.TLoginActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
