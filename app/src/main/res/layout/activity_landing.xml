@@ -25,14 +25,12 @@
         android:background="@drawable/ic_side_left_bg" />
 
 
-
-
     <ImageView
+        android:id="@+id/doc"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:id="@+id/doc"
         android:layout_above="@+id/box"
-        android:src="@drawable/ic_doctor"/>
+        android:src="@drawable/ic_conference_education" />
 
 
     <LinearLayout
@@ -62,7 +60,7 @@
         <Button
             android:layout_width="match_parent"
             android:id="@+id/doctor"
-            android:text="Doctor Login"
+            android:text="Teacher Login"
             android:textStyle="bold"
             app:backgroundTint="@null"
             android:textColor="#FFF"
@@ -85,7 +83,7 @@
             app:backgroundTint="@null"
             android:textAllCaps="false"
             android:fontFamily="@font/gotham"
-            android:text="Patient Login"
+            android:text="Student Login"
             android:padding="10dp"
             android:layout_height="60dp"/>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.aislyn.appointment">
+    package="com.online.appointment">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,7 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RetrofitAppFull"
         android:usesCleartextTraffic="true">
-        <activity android:name=".HospitalListActivity"></activity>
+        <activity
+            android:name=".teacher.Activities.Question_set_change"
+            android:exported="false" />
+        <activity
+            android:name=".teacher.Activities.StudentResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".student.Activities.ResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".student.Activities.Starttest"
+            android:exported="true" />
+        <activity
+            android:name=".teacher.Activities.QuestionAddMainActivity"
+            android:exported="false" />
         <activity android:name=".LandingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,13 +34,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PaymentActivity" />
-        <activity android:name=".users.Activities.HomeActivity" />
-        <activity android:name=".users.Activities.MainActivityy" />
-        <activity android:name=".users.Activities.LoginActivity" />
-        <activity android:name=".doctor.Activities.DRHomeActivity" />
-        <activity android:name=".doctor.Activities.MainActivityy" />
-        <activity android:name=".doctor.Activities.LoginActivity" />
+        <activity android:name=".student.Activities.SHomeActivity" />
+        <activity android:name=".student.Activities.SMainActivityy" />
+        <activity android:name=".student.Activities.SLoginActivity" />
+        <activity android:name=".teacher.Activities.THomeActivity" />
+        <activity android:name=".teacher.Activities.TMainActivityy" />
+        <activity android:name=".teacher.Activities.TLoginActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
