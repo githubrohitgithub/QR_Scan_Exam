@@ -6,9 +6,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_doctor_logo"
+        android:icon="@drawable/ic_online_survey"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_doctor_logo"
+        android:roundIcon="@drawable/ic_online_survey"
         android:supportsRtl="true"
         android:theme="@style/Theme.RetrofitAppFull"
         android:usesCleartextTraffic="true">
