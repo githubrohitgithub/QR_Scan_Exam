@@ -13,9 +13,6 @@
         android:theme="@style/Theme.RetrofitAppFull"
         android:usesCleartextTraffic="true">
         <activity
-            android:name="com.rohit.onlne_exams.teacher.Activities.Question_set_change"
-            android:exported="false" />
-        <activity
             android:name="com.rohit.onlne_exams.teacher.Activities.StudentResultActivity"
             android:exported="false" />
         <activity
@@ -28,13 +25,26 @@
             android:name="com.rohit.onlne_exams.teacher.Activities.QuestionAddMainActivity"
             android:exported="false" />
         <activity android:name="com.rohit.onlne_exams.LandingActivity">
+
+
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
+
+
+
         </activity>
-        <activity android:name="com.rohit.onlne_exams.student.Activities.SHomeActivity" />
+        <activity android:name="com.rohit.onlne_exams.student.Activities.SHomeActivity" >
+
+
+
+        </activity>
         <activity android:name="com.rohit.onlne_exams.student.Activities.SMainActivityy" />
         <activity android:name="com.rohit.onlne_exams.student.Activities.SLoginActivity" />
         <activity android:name="com.rohit.onlne_exams.teacher.Activities.THomeActivity" />

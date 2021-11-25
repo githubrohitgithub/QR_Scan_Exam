@@ -62,8 +62,8 @@ public interface Api {
     Call<SRegisterResponse> sregister(
 
 
-            @Field("name") String name,
             @Field("sreg") String sreg,
+            @Field("name") String name,
             @Field("email") String email,
             @Field("password") String passowrd
 
@@ -113,8 +113,12 @@ public interface Api {
 
 
 
-    @GET("scan.php")
+    @FormUrlEncoded
+    @POST("scan.php")
     Call<QuestionResponse> squestions(
+
+            @Field("sub_code") String sub_code,
+            @Field("set_code") String set_code
 
 
     );

@@ -15,7 +15,7 @@ public class THomeActivity extends AppCompatActivity  {
 
 
     EditText sub_code,set_code;
-    Button add,previus_result,setchange;
+    Button add,previus_result;
    public static String TEACHER_ID,SUB_CODE,SET_CODE;
 
     @Override
@@ -31,18 +31,8 @@ public class THomeActivity extends AppCompatActivity  {
         set_code=findViewById(R.id.set_code);
         add=findViewById(R.id.add);
         previus_result=findViewById(R.id.previus_result);
-        setchange=findViewById(R.id.setchange);
 
 
-        setchange.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent=new Intent(getApplicationContext(),Question_set_change.class);
-                startActivity(intent);
-
-            }
-        });
 
         previus_result.setOnClickListener(new View.OnClickListener() {
             @Override

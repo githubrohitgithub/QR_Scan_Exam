@@ -4,7 +4,6 @@ public class Question {
 
     int id;
     String sub_code;
-    String teacher_id;
     String setcode;
     String question;
     String optionA;
@@ -13,10 +12,9 @@ public class Question {
     String optionD;
     String answer;
 
-    public Question(int id, String sub_code, String teacher_id, String setcode, String question, String optionA, String optionB, String optionC, String optionD, String answer) {
+    public Question(int id, String sub_code, String setcode, String question, String optionA, String optionB, String optionC, String optionD, String answer) {
         this.id = id;
         this.sub_code = sub_code;
-        this.teacher_id = teacher_id;
         this.setcode = setcode;
         this.question = question;
         this.optionA = optionA;
@@ -42,13 +40,6 @@ public class Question {
         this.sub_code = sub_code;
     }
 
-    public String getTeacher_id() {
-        return teacher_id;
-    }
-
-    public void setTeacher_id(String teacher_id) {
-        this.teacher_id = teacher_id;
-    }
 
     public String getSetcode() {
         return setcode;

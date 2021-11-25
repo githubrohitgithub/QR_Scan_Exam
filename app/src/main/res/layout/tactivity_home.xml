@@ -8,21 +8,6 @@
     tools:context=".teacher.Activities.THomeActivity">
 
 
-    <Button
-        android:id="@+id/setchange"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:layout_margin="5dp"
-        android:background="@drawable/button_3d"
-        android:text="Question Set Change"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:backgroundTint="@null"
-        app:layout_constraintBottom_toTopOf="@+id/previus_result"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/previus_result"
@@ -69,7 +54,7 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/editboxbg"
         android:gravity="center"
-        android:hint="Enter Set Code"
+        android:hint="Enter Set Code A/B/C/D"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"

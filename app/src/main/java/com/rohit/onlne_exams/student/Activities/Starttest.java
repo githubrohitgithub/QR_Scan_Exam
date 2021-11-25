@@ -1,5 +1,6 @@
 package com.rohit.onlne_exams.student.Activities;
 
+import static com.rohit.onlne_exams.student.Activities.SHomeActivity.Choosensub_code;
 import static com.rohit.onlne_exams.student.Activities.SLoginActivity.student_name;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,16 +16,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.rohit.onlne_exams.GLOBAL;
 import com.rohit.onlne_exams.R;
 import com.rohit.onlne_exams.network.RetrofitClient;
 import com.rohit.onlne_exams.student.ModelResponse.QuestionResponse;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,6 +47,8 @@ public class Starttest extends AppCompatActivity {
     public static int correct=0,wrong=0,TOTAL_QUESTION=0;
     public static String SUBJECT_CODE,SET_CODE;
 
+    String YOUR_SET;
+
 
     TextView timeremaining;
 
@@ -65,6 +65,10 @@ public class Starttest extends AppCompatActivity {
         Bundle bn=getIntent().getExtras();
         assert bn != null;
         Scannedurl=bn.getString("US");
+
+        Random r = new Random();
+        String alphabet = GLOBAL.QUESTION_SET_CONSTANT;
+        YOUR_SET = String.valueOf(alphabet.charAt(r.nextInt(alphabet.length())));
 
 
         fetch();
@@ -157,62 +161,15 @@ public class Starttest extends AppCompatActivity {
 
 
     private void fetch() {
-        StringRequest request = new StringRequest(Request.Method.POST, Scannedurl, response -> {
 
-
-            if(response.contains("A")){
-
-                Toast.makeText(Starttest.this, "Set A", Toast.LENGTH_SHORT).show();
-                callApi();
-
-
-            }else if(response.contains("B")){
-
-                Toast.makeText(Starttest.this, "Set B", Toast.LENGTH_SHORT).show();
-                callApi();
-
-
-            }else if(response.contains("C")){
-
-                Toast.makeText(Starttest.this, "Set C", Toast.LENGTH_SHORT).show();
-                callApi();
-
-
-            }else if(response.contains("D")){
-
-                Toast.makeText(Starttest.this, "Set D", Toast.LENGTH_SHORT).show();
-                callApi();
-
-
-            }
-
-
-
-
-
-
-
-        }, (Response.ErrorListener) error -> {
-
-
-            Toast.makeText(Starttest.this, "Check your Internet and Scan again", Toast.LENGTH_SHORT).show();
-
-        }
-
-        ) {
-
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(Starttest.this);
-        requestQueue.add(request);
-
+        callApi();
 
 
     }
 
     private void callApi() {
 
-        Call<QuestionResponse> call= RetrofitClient.getInstance().getApi().squestions();
+        Call<QuestionResponse> call= RetrofitClient.getInstance().getApi().squestions(Choosensub_code,YOUR_SET);
 
         call.enqueue(new Callback<QuestionResponse>() {
             @Override
