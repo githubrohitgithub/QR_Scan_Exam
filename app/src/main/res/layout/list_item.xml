@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@drawable/editboxbg"
+    android:padding="10dp">
+
+
+   <TextView
+       android:layout_width="match_parent"
+       android:id="@+id/id_"
+       android:textSize="15sp"
+       android:layout_height="wrap_content"/>
+
+    <TextView
+       android:layout_width="match_parent"
+       android:id="@+id/subcode_"
+        android:textSize="15sp"
+       android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/setcode_"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/sregno_"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/correct_"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/wrong_"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/total_"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/attempted_"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/result_"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

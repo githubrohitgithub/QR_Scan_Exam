@@ -1,14 +1,21 @@
 package com.rohit.onlne_exams.teacher.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rohit.onlne_exams.R;
+import com.rohit.onlne_exams.adapers.ResultDataAdapter;
+import com.rohit.onlne_exams.adapers.ResultData;
 import com.rohit.onlne_exams.network.RetrofitClient;
+import com.rohit.onlne_exams.teacher.ModelResponse.Result;
 import com.rohit.onlne_exams.teacher.ModelResponse.ResultResponse;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,9 +23,11 @@ import retrofit2.Callback;
 public class StudentResultActivity extends AppCompatActivity {
 
 
-    ResultResponse resultResponse;
 
-    TextView result;
+    ArrayList<ResultData> resultData =new ArrayList<ResultData>();
+    List<Result> locationList;
+    RecyclerView recyclerView;
+    ResultDataAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +35,12 @@ public class StudentResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_studentresult);
 
 
-        result=findViewById(R.id.result);
+        recyclerView = findViewById(R.id.recyclerview);
+        adapter = new ResultDataAdapter(StudentResultActivity.this, resultData);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
 
         setTitle("Student Result");
 
@@ -45,27 +59,20 @@ public class StudentResultActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
 
 
-                    resultResponse=response.body();
+                    locationList=response.body().getResultList();
+
+                    Toast.makeText(getApplicationContext(), locationList.get(0).getResult(), Toast.LENGTH_SHORT).show();
 
 
-                    result.setText("");
-
-                    for(int i=0;i<=resultResponse.getResultList().size()-1;i++){
+                    for(Result data:locationList){
 
 
-                        result.append("ID "+resultResponse.getResultList().get(i).getId()+"\n"+
-                                "SUBJECT CODE  "+resultResponse.getResultList().get(i).getSub_code()+"\n"+
-                                "SET CODE "+resultResponse.getResultList().get(i).getSet_code()+"\n"+
-                                "REG NO. "+resultResponse.getResultList().get(i).getSreg_no()+"\n"+
-                                "CORRECT "+resultResponse.getResultList().get(i).getCorrect()+"\n"+
-                                "WRONG "+resultResponse.getResultList().get(i).getWrong()+"\n"+
-                                "ATTEMPTED "+resultResponse.getResultList().get(i).getAttempted()+"\n"+
-                                "TOTAL "+resultResponse.getResultList().get(i).getTotal()+"\n"+
-                                "RESULT "+resultResponse.getResultList().get(i).getResult()+"\n\n");
 
-
+                        resultData.add(new ResultData(data.getId(),data.getSub_code(),data.getSet_code(),data.getSreg_no(),data.getCorrect(),data.getWrong(),data.getTotal(),data.getAttempted(),data.getResult()));
 
                     }
+
+                    recyclerView.setAdapter(adapter);
 
 
 

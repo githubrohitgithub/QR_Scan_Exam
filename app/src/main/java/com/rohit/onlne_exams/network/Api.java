@@ -71,6 +71,17 @@ public interface Api {
 
 
     @FormUrlEncoded
+    @POST("checkstudent.php")
+    Call<SRegisterResponse> checkstudent(
+
+
+            @Field("sreg") String sreg,
+            @Field("sub_code") String subcode
+
+    );
+
+
+    @FormUrlEncoded
     @POST("update_result.php")
     Call<SRegisterResponse> supdate_result(
 

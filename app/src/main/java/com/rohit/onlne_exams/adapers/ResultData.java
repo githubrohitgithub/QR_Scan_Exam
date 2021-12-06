@@ -1,20 +1,19 @@
-package com.rohit.onlne_exams.teacher.ModelResponse;
+package com.rohit.onlne_exams.adapers;
 
-public class Result {
+public class ResultData {
 
 
+    private String id;
+    private String sub_code;
+    private String set_code;
+    private String sreg_no;
+    private String correct;
+    private String wrong;
+    private String total;
+    private String attempted;
+    private String result;
 
-    String id;
-    String sub_code;
-    String set_code;
-    String sreg_no;
-    String correct;
-    String wrong;
-    String total;
-    String attempted;
-    String result;
-
-    public Result(String id, String sub_code, String set_code, String sreg_no, String correct, String wrong, String total, String attempted, String result) {
+    public ResultData(String id, String sub_code, String set_code, String sreg_no, String correct, String wrong, String total, String attempted, String result) {
         this.id = id;
         this.sub_code = sub_code;
         this.set_code = set_code;

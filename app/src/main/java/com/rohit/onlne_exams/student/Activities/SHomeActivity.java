@@ -2,12 +2,15 @@ package com.rohit.onlne_exams.student.Activities;
 
 import static android.widget.Toast.LENGTH_LONG;
 
+import static com.rohit.onlne_exams.student.Activities.SLoginActivity.STUDENT_ID;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,10 +22,15 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.rohit.onlne_exams.GLOBAL;
 import com.rohit.onlne_exams.R;
+import com.rohit.onlne_exams.network.RetrofitClient;
+import com.rohit.onlne_exams.student.ModelResponse.SRegisterResponse;
 
 import java.util.ArrayList;
 
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class SHomeActivity extends AppCompatActivity  {
@@ -31,6 +39,7 @@ public class SHomeActivity extends AppCompatActivity  {
     Button scan;
     CircularProgressButton done;
 
+
     AutoCompleteTextView  actv;
     public static String Choosensub_code;
     String url;
@@ -38,6 +47,7 @@ public class SHomeActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sactivity_home);
+
 
 
         done=findViewById(R.id.done);
@@ -93,23 +103,70 @@ public class SHomeActivity extends AppCompatActivity  {
             public void onClick(View view) {
 
 
-                if(url==null){
 
-                    Toast.makeText(getApplicationContext(), "Scan QR", Toast.LENGTH_SHORT).show();
 
-                }else{
+                checkstudent();
 
-                    Intent intent=new Intent(SHomeActivity.this,Starttest.class);
-                    intent.putExtra("US",url);
-                    startActivity(intent);
-                    finish();
-                }
 
 
             }
         });
 
 
+    }
+
+    public void checkstudent() {
+
+        Call<SRegisterResponse> call= RetrofitClient
+                .getInstance()
+                .getApi()
+                .checkstudent(STUDENT_ID,Choosensub_code);
+
+        call.enqueue(new Callback<SRegisterResponse>() {
+            @Override
+            public void onResponse(Call<SRegisterResponse> call, Response<SRegisterResponse> response) {
+
+                SRegisterResponse registerResponse=response.body();
+                if(response.isSuccessful()){
+
+
+
+                    if(response.body().getError().equals("400")){
+
+
+                        if(url==null){
+
+                            Toast.makeText(getApplicationContext(), "Scan QR", Toast.LENGTH_SHORT).show();
+
+                        }else{
+
+                            Intent intent=new Intent(SHomeActivity.this,Starttest.class);
+                            intent.putExtra("US",url);
+                            startActivity(intent);
+                            finish();
+                        }
+
+
+                    }else{
+
+                        Toast.makeText(getApplicationContext(), "You already given exam.", Toast.LENGTH_SHORT).show();
+                    }
+
+
+
+                }else{
+                    Toast.makeText(getApplicationContext(), registerResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<SRegisterResponse> call, Throwable t) {
+
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void scanqr() {

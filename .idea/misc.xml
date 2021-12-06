@@ -3,8 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/old_desktop/Online_QR_Exam/app/src/main/res/layout/tactivity_home.xml" value="0.2234375" />
         <entry key="..\:/LATEST_BACKUP/bp/PatientAppointment/app/src/main/res/layout/activity_question_set_change.xml" value="0.20462962962962963" />
         <entry key="..\:/LATEST_BACKUP/bp/PatientAppointment/app/src/main/res/layout/sactivityy_main.xml" value="0.14945652173913043" />
+        <entry key="..\:/Users/CC4/AndroidStudioProjects/old_desktop/Online_QR_Exam/app/src/main/res/layout/activity_starttest.xml" value="0.2234375" />
+        <entry key="..\:/Users/CC4/AndroidStudioProjects/old_desktop/Online_QR_Exam/app/src/main/res/layout/activity_studentresult.xml" value="0.2234375" />
+        <entry key="..\:/Users/CC4/AndroidStudioProjects/old_desktop/Online_QR_Exam/app/src/main/res/layout/list_item.xml" value="0.4" />
+        <entry key="..\:/Users/CC4/AndroidStudioProjects/old_desktop/Online_QR_Exam/app/src/main/res/layout/sactivity_home.xml" value="0.2234375" />
+        <entry key="..\:/Users/CC4/AndroidStudioProjects/old_desktop/Online_QR_Exam/app/src/main/res/layout/sactivityy_main.xml" value="0.2234375" />
         <entry key="..\:/Users/CC4/AndroidStudioProjects/old_desktop/PatientAppointment/app/src/main/res/layout/activity_question_add_main.xml" value="0.2234375" />
         <entry key="..\:/Users/CC4/AndroidStudioProjects/old_desktop/PatientAppointment/app/src/main/res/layout/activity_question_set_change.xml" value="0.2234375" />
         <entry key="..\:/Users/CC4/AndroidStudioProjects/old_desktop/PatientAppointment/app/src/main/res/layout/activity_starttest.xml" value="0.2234375" />

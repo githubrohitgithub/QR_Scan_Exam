@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,9 +17,11 @@ import com.rohit.onlne_exams.R;
 public class THomeActivity extends AppCompatActivity  {
 
 
-    EditText sub_code,set_code;
+    EditText sub_code;
     Button add,previus_result;
-   public static String TEACHER_ID,SUB_CODE,SET_CODE;
+    public static String TEACHER_ID,SUB_CODE,SET_CODE;
+    private RadioGroup radioSexGroup;
+    private RadioButton radioSexButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +33,7 @@ public class THomeActivity extends AppCompatActivity  {
 
 
         sub_code=findViewById(R.id.sub_code);
-        set_code=findViewById(R.id.set_code);
+        radioSexGroup=(RadioGroup)findViewById(R.id.radioGroup);
         add=findViewById(R.id.add);
         previus_result=findViewById(R.id.previus_result);
 
@@ -47,7 +52,8 @@ public class THomeActivity extends AppCompatActivity  {
         add.setOnClickListener(view -> {
 
             String code=sub_code.getText().toString();
-            String setcode=set_code.getText().toString();
+            int selectedId=radioSexGroup.getCheckedRadioButtonId();
+            radioSexButton= findViewById(selectedId);
 
             if(code.isEmpty()){
                 sub_code.requestFocus();
@@ -55,14 +61,11 @@ public class THomeActivity extends AppCompatActivity  {
                 return;
             }
 
-            if(setcode.isEmpty()){
-                set_code.requestFocus();
-                set_code.setError("Please Enter Set Code");
-                return;
-            }
+
 
             SUB_CODE=code;
-            SET_CODE=setcode;
+            SET_CODE=radioSexButton.getText().toString();
+
 
 
             Intent intent=new Intent(this,QuestionAddMainActivity.class);

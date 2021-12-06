@@ -38,30 +38,69 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/set_code"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/set_code"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_above="@+id/add"
-        android:layout_below="@+id/sub_code"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/editboxbg"
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
         android:gravity="center"
-        android:hint="Enter Set Code A/B/C/D"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/add"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/add">
+
+        <RadioButton
+            android:id="@+id/radioButtonA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:checked="true"
+            android:text="A"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_margin="5dp"
+            android:textSize="25dp" />
+
+        <RadioButton
+            android:id="@+id/radioButtonB"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.13"
+            android:checked="false"
+            android:text="B"
+            android:layout_margin="5dp"
+            android:textSize="25dp" />
+        <RadioButton
+            android:id="@+id/radioButtonC"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.13"
+            android:checked="false"
+            android:text="C"
+            android:layout_margin="5dp"
+            android:textSize="25dp" />
+        <RadioButton
+            android:id="@+id/radioButtonD"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.13"
+            android:checked="false"
+            android:text="D"
+            android:layout_margin="5dp"
+            android:textSize="25dp" />
+    </RadioGroup>
 
     <Button
         android:id="@+id/add"
