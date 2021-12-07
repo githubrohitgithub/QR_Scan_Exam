@@ -16,5 +16,12 @@
         android:layout_height="match_parent" />
 
 
+    <Button
+        android:layout_width="match_parent"
+        android:text="PDF"
+        android:id="@+id/pdf"
+        android:visibility="invisible"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>

@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/old_desktop/Online_QR_Exam/app/src/main/res/drawable/ic_doctor_logo.xml" value="0.24375" />
+        <entry key="..\:/AndroidStudioProjects/old_desktop/Online_QR_Exam/app/src/main/res/layout/activity_studentresult.xml" value="0.2234375" />
         <entry key="..\:/AndroidStudioProjects/old_desktop/Online_QR_Exam/app/src/main/res/layout/sactivity_home.xml" value="0.2234375" />
         <entry key="..\:/AndroidStudioProjects/old_desktop/Online_QR_Exam/app/src/main/res/layout/tactivity_home.xml" value="0.2234375" />
         <entry key="..\:/LATEST_BACKUP/bp/PatientAppointment/app/src/main/res/layout/activity_question_set_change.xml" value="0.20462962962962963" />

@@ -65,7 +65,6 @@ public class SHomeActivity extends AppCompatActivity  {
                 ArrayAdapter(this,android.R.layout.simple_list_item_1, GLOBAL.SUBJECT_CODE_ARRAYLIST);
 
         actv.setAdapter(adapter);
-        actv.setThreshold(1);
         actv.setAdapter(adapter);
 
 

@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.rohit.onlne_exams.R;
@@ -24,10 +27,11 @@ public class StudentResultActivity extends AppCompatActivity {
 
 
 
-    ArrayList<ResultData> resultData =new ArrayList<ResultData>();
+   public static ArrayList<ResultData> resultData =new ArrayList<ResultData>();
     List<Result> locationList;
     RecyclerView recyclerView;
     ResultDataAdapter adapter;
+    Button pdf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +40,18 @@ public class StudentResultActivity extends AppCompatActivity {
 
 
         recyclerView = findViewById(R.id.recyclerview);
+        pdf = findViewById(R.id.pdf);
         adapter = new ResultDataAdapter(StudentResultActivity.this, resultData);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+        pdf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),Pdf_Creater.class));
+            }
+        });
 
 
         setTitle("Student Result");
@@ -61,6 +73,8 @@ public class StudentResultActivity extends AppCompatActivity {
 
                     locationList=response.body().getResultList();
 
+
+                    pdf.setVisibility(View.VISIBLE);
 
 
                     for(Result data:locationList){

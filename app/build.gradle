@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.rohit.onlne_exams"
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -38,6 +38,7 @@ android {
 
 dependencies {
 
+    implementation project(path: ':pdfcreator')
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
@@ -55,4 +56,5 @@ dependencies {
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
     implementation 'com.google.zxing:core:3.2.1'
     implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
+    implementation 'com.karumi:dexter:6.2.3'
 }

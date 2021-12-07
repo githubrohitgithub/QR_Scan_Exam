@@ -1,6 +1,7 @@
 package com.rohit.onlne_exams.adapers;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rohit.onlne_exams.R;
+import com.rohit.onlne_exams.teacher.Activities.Pdf_Creater;
 import com.rohit.onlne_exams.teacher.Activities.StudentResultActivity;
 
 import java.util.ArrayList;
@@ -55,7 +57,16 @@ public class ResultDataAdapter extends RecyclerView.Adapter<ResultDataAdapter.Vi
             public void onClick(View view) {
 
 
-                Toast.makeText(mapActivity, listdata.get(position).getResult(), Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(mapActivity, Pdf_Creater.class);
+                intent.putExtra("sub_code",resultData.getSub_code());
+                intent.putExtra("set_code",resultData.getSet_code());
+                intent.putExtra("regno",resultData.getSreg_no());
+                intent.putExtra("correct",resultData.getCorrect());
+                intent.putExtra("wrong",resultData.getWrong());
+                intent.putExtra("total",resultData.getTotal());
+                intent.putExtra("attempted",resultData.getAttempted());
+                intent.putExtra("result",resultData.getResult());
+                mapActivity.startActivity(intent);
 
 
             }

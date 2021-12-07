@@ -2,6 +2,8 @@ package com.rohit.onlne_exams.teacher.Activities;
 
 import static com.rohit.onlne_exams.student.Activities.SLoginActivity.STUDENT_ID;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,11 +16,18 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.rohit.onlne_exams.R;
 import com.rohit.onlne_exams.network.RetrofitClient;
 import com.rohit.onlne_exams.student.Activities.SHomeActivity;
 import com.rohit.onlne_exams.student.Activities.Starttest;
 import com.rohit.onlne_exams.student.ModelResponse.SRegisterResponse;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,12 +41,14 @@ public class THomeActivity extends AppCompatActivity  {
     public static String TEACHER_ID,SUB_CODE,SET_CODE;
     private RadioGroup radioSexGroup;
     private RadioButton radioSexButton;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tactivity_home);
 
+        context=this;
 
         TEACHER_ID=getIntent().getStringExtra("teacher_id");
 
@@ -46,6 +57,34 @@ public class THomeActivity extends AppCompatActivity  {
         radioSexGroup=(RadioGroup)findViewById(R.id.radioGroup);
         add=findViewById(R.id.add);
         previus_result=findViewById(R.id.previus_result);
+
+        Dexter.withContext(context)
+                .withPermissions(
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ).withListener(new MultiplePermissionsListener() {
+            @Override public void onPermissionsChecked(MultiplePermissionsReport report) {
+
+
+
+                if(!report.areAllPermissionsGranted()) {
+
+
+                    Toast.makeText(context, "Not all permissions granted.", Toast.LENGTH_SHORT).show();
+
+                }
+
+
+
+
+            }
+            @Override public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+
+                token.continuePermissionRequest();
+
+
+            }
+        }).check();
 
 
 
