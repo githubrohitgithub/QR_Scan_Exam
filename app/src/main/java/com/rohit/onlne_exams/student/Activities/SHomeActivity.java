@@ -155,7 +155,7 @@ public class SHomeActivity extends AppCompatActivity  {
 
 
                 }else{
-                    Toast.makeText(getApplicationContext(), registerResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -164,7 +164,7 @@ public class SHomeActivity extends AppCompatActivity  {
             @Override
             public void onFailure(Call<SRegisterResponse> call, Throwable t) {
 
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -147,6 +147,16 @@ public interface Api {
 
     );
 
+    @FormUrlEncoded
+    @POST("checksubcode.php")
+    Call<SRegisterResponse> checksubcode(
+
+            @Field("sub_code") String sub_code,
+            @Field("set_code") String set_code
+
+
+    );
+
 
 
 

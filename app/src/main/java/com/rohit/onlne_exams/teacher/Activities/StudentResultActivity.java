@@ -61,7 +61,6 @@ public class StudentResultActivity extends AppCompatActivity {
 
                     locationList=response.body().getResultList();
 
-                    Toast.makeText(getApplicationContext(), locationList.get(0).getResult(), Toast.LENGTH_SHORT).show();
 
 
                     for(Result data:locationList){
@@ -80,7 +79,7 @@ public class StudentResultActivity extends AppCompatActivity {
 
                 }else{
 
-                    Toast.makeText(getApplicationContext(), response.body().getError(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "No data found", Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -88,7 +87,7 @@ public class StudentResultActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResultResponse> call, Throwable t) {
 
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "No data found", Toast.LENGTH_SHORT).show();
             }
         });
 

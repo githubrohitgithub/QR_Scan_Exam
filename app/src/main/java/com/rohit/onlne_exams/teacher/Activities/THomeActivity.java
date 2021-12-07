@@ -1,5 +1,7 @@
 package com.rohit.onlne_exams.teacher.Activities;
 
+import static com.rohit.onlne_exams.student.Activities.SLoginActivity.STUDENT_ID;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.rohit.onlne_exams.R;
+import com.rohit.onlne_exams.network.RetrofitClient;
+import com.rohit.onlne_exams.student.Activities.SHomeActivity;
+import com.rohit.onlne_exams.student.Activities.Starttest;
+import com.rohit.onlne_exams.student.ModelResponse.SRegisterResponse;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class THomeActivity extends AppCompatActivity  {
 
@@ -68,9 +78,50 @@ public class THomeActivity extends AppCompatActivity  {
 
 
 
-            Intent intent=new Intent(this,QuestionAddMainActivity.class);
-            startActivity(intent);
-            finish();
+            Call<SRegisterResponse> call= RetrofitClient
+                    .getInstance()
+                    .getApi()
+                    .checksubcode(SUB_CODE,SET_CODE);
+
+            call.enqueue(new Callback<SRegisterResponse>() {
+                @Override
+                public void onResponse(Call<SRegisterResponse> call, Response<SRegisterResponse> response) {
+
+
+                    if(response.isSuccessful()){
+
+
+
+                        if(response.body().getError().equals("200")){
+
+
+                            Intent intent=new Intent(getApplicationContext(),QuestionAddMainActivity.class);
+                            startActivity(intent);
+                            finish();
+
+
+                        }else{
+
+                            Toast.makeText(getApplicationContext(), "Already exist.", Toast.LENGTH_SHORT).show();
+                        }
+
+
+
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Already exist.", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }
+
+                @Override
+                public void onFailure(Call<SRegisterResponse> call, Throwable t) {
+
+                    Toast.makeText(getApplicationContext(), "Already exist.", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
 
 
 
