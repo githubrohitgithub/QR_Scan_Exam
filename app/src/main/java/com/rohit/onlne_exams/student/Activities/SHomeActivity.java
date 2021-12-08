@@ -54,7 +54,6 @@ public class SHomeActivity extends AppCompatActivity  {
         scan=findViewById(R.id.scan);
         actv =findViewById(R.id.multiAutoCompleteTextView1);
 
-        actv= findViewById(R.id.multiAutoCompleteTextView1);
 
 
 
@@ -93,17 +92,6 @@ public class SHomeActivity extends AppCompatActivity  {
         GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18PHYL26");
         GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18ELEL27");
         GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18EGH28");
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -192,6 +180,7 @@ public class SHomeActivity extends AppCompatActivity  {
                 ArrayAdapter(this,android.R.layout.simple_list_item_1, GLOBAL.SUBJECT_CODE_ARRAYLIST);
 
         actv.setAdapter(adapter);
+        actv.setThreshold(1);
         actv.setAdapter(adapter);
 
 
