@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_above="@+id/box"
-        android:src="@drawable/ic_conference_education" />
+        android:src="@drawable/logo" />
 
 
     <LinearLayout

@@ -180,7 +180,7 @@ public class Pdf_Creater extends PDFCreatorActivity {
                 130,
                 130, 0);
         imageView.setImageScale(ImageView.ScaleType.CENTER_INSIDE);
-        imageView.setImageResource(R.drawable.ic_doctor_logo);
+        imageView.setImageResource(R.drawable.logo);
 //        imageLayoutParam.setMargins(0, 0, 20, 0);
         imageView.setLayout(imageLayoutParam);
         horizontalView.addView(imageView);
