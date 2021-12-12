@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
         android:text="Enter Subject Code"
-        android:textSize="18sp"
+        android:textSize="13sp"
         android:textStyle="bold"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/multiAutoCompleteTextView1"
