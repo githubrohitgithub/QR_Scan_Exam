@@ -40,12 +40,13 @@
 
     <AutoCompleteTextView
         android:id="@+id/multiAutoCompleteTextView1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="371dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="496dp"
         android:ems="10"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
+        android:textColor="@color/white"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:fontFamily="@font/montserrat_bold"

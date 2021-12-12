@@ -90,7 +90,6 @@ public class SHomeActivity extends AppCompatActivity  {
         GLOBAL.data.put("Discrete Mathematical Structures", "18CS36");
         GLOBAL.data.put("Analog and Digital Electronics Laboratory", "18CSL37");
         GLOBAL.data.put("Data Structures Laboratory", "18CSL38");
-        GLOBAL.data.put("Vyavaharika Kannada (Kannada for communication)", "18KVK39");
         GLOBAL.data.put("Aadalitha Kannada (Kannada for Administration)", "18KAK39");
         GLOBAL.data.put("Constitution of India, Professional Ethics and Cyber Law", "18CPC39");
         GLOBAL.data.put("ADDITIONAL MATHEMATICS – I", "18MATDIP31");

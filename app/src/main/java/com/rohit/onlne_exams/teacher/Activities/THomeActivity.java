@@ -6,6 +6,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -13,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,7 +33,11 @@ import com.rohit.onlne_exams.student.Activities.SHomeActivity;
 import com.rohit.onlne_exams.student.Activities.Starttest;
 import com.rohit.onlne_exams.student.ModelResponse.SRegisterResponse;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,6 +53,7 @@ public class THomeActivity extends AppCompatActivity  {
     private RadioButton radioSexButton;
     Context context;
     AutoCompleteTextView actv;
+    TextView textView3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,137 +65,143 @@ public class THomeActivity extends AppCompatActivity  {
 
 
         actv =findViewById(R.id.multiAutoCompleteTextView1);
+        textView3 =findViewById(R.id.textView3);
         radioSexGroup=(RadioGroup)findViewById(R.id.radioGroup);
         add=findViewById(R.id.add);
         previus_result=findViewById(R.id.previus_result);
 
 
 
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18MAT11");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CHE12");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CPS13");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18ELN14");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18ME15");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CHEL16");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CPL17");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18EGH18");
 
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18MAT21");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CHE22");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CPS23");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18ELN24");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18ME25");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CHEL26");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CPL27");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18EGH28");
+        //chemistry
+        GLOBAL.data.put("Calculus and Linear Algebra", "18MAT11");
+        GLOBAL.data.put("Engineering Chemistry", "18CHE12");
+        GLOBAL.data.put("C Programming for Problem Solving", "18CPS13");
+        GLOBAL.data.put("Basic Electronics", "18ELN14");
+        GLOBAL.data.put("Elements of Mechanical Engineering", "18ME15");
+        GLOBAL.data.put("Engineering Chemistry Laboratory", "18CHEL16");
+        GLOBAL.data.put("C Programming Laboratory", "18CPL17");
+        GLOBAL.data.put("Technical English-I", "18EGH18");
 
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18MAT11");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18PHY12");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CIV14");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18EGDL15");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18PHYL16");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18ELEL17");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18EGH18");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18ELE13");
+        //physics
+        GLOBAL.data.put("Advanced Calculus and Numerical Methods", "18MAT21");
 
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18MAT21");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18PHY22");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18ELE23");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CIV24");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18EGDL25");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18PHYL26");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18ELEL27");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18EGH28");
+        //3rd
+        GLOBAL.data.put("Transform Calculus, Fourier Series And Numerical Techniques", "18MAT31");
+        GLOBAL.data.put("Data Structures and Applications", "18CS32");
+        GLOBAL.data.put("Analog and Digital Electronics", "18CS33");
+        GLOBAL.data.put("Computer Organization", "18CS34");
+        GLOBAL.data.put("Software Engineering", "18CS35");
+        GLOBAL.data.put("Discrete Mathematical Structures", "18CS36");
+        GLOBAL.data.put("Analog and Digital Electronics Laboratory", "18CSL37");
+        GLOBAL.data.put("Data Structures Laboratory", "18CSL38");
+        GLOBAL.data.put("Aadalitha Kannada (Kannada for Administration)", "18KAK39");
+        GLOBAL.data.put("Constitution of India, Professional Ethics and Cyber Law", "18CPC39");
+        GLOBAL.data.put("ADDITIONAL MATHEMATICS – I", "18MATDIP31");
 
 
-
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18MAT31");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS32");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS33");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS34");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS35");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS36");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CSL37");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CSL38");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18KVK39");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18KAK39");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CPC39");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18MATDIP31");
-
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18MAT41");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS42");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS43");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS44");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS45");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS46");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CSL47");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CSL48");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18KVK49");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18KAK49");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18MATDIP41");
-
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS51");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS52");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS53");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS54");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS55");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS56");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CSL57");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CSL58");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CIV59");
-
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS61");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS62");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS63");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CSL66");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CSL67");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CSMP68");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS641");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS642");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS643");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS644");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS645");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS651");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS652");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS653");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS654");
+        //4th
+        GLOBAL.data.put("Complex Analysis, Probability and Statistical Methods", "18MAT41");
+        GLOBAL.data.put("Design and Analysis of Algorithms", "18CS42");
+        GLOBAL.data.put("Operating Systems", "18CS43");
+        GLOBAL.data.put("Microcontroller and Embedded Systems", "18CS44");
+        GLOBAL.data.put("Object Oriented Concepts", "18CS45");
+        GLOBAL.data.put("Data Communication", "18CS46");
+        GLOBAL.data.put("Design and Analysis of Algorithm Laboratory", "18CSL47");
+        GLOBAL.data.put("Microcontroller and Embedded Systems Laboratory", "18CSL48");
+        GLOBAL.data.put("Vyavaharika Kannada (Kannada for communication)", "18KVK49");
+        GLOBAL.data.put("ADDITIONAL MATHEMATICS – II", "18MATDIP41");
 
 
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS71");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS72");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CSL76");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CSP77");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS731");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS732");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS733");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS734");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS741");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS742");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS743");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS744");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS745");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS751");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS752");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS753");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS754");
+        //5th
+        GLOBAL.data.put("Management, Entrepreneurship for IT idustry", "18CS51");
+        GLOBAL.data.put("Computer Networks and Security", "18CS52");
+        GLOBAL.data.put("Database Management System", "18CS53");
+        GLOBAL.data.put("Automata theory and Computability", "18CS54");
+        GLOBAL.data.put("Application Development using Python", "18CS55");
+        GLOBAL.data.put("Unix Programming", "18CS56");
+        GLOBAL.data.put("Computer Network Laboratory", "18CSL57");
+        GLOBAL.data.put("DBMS Laboratory with mini project", "18CSL58");
+        GLOBAL.data.put("Environmental Studies", "18CIV59");
+
+        //6th
+        GLOBAL.data.put("System Software and Compilers", "18CS61");
+        GLOBAL.data.put("Computer Graphics and Visualization", "18CS62");
+        GLOBAL.data.put("Web Technology and its applications", "18CS63");
+        GLOBAL.data.put("System Software Laboratory", "18CSL66");
+        GLOBAL.data.put("Computer Graphics Laboratory with mini project", "18CSL67");
+        GLOBAL.data.put("Data Mining and Data Warehousing", "18CS641");
+        GLOBAL.data.put("Object Oriented Modelling and Design", "18CS642");
+        GLOBAL.data.put("Cloud Computing and its Applications", "18CS643");
+        GLOBAL.data.put("Advanced JAVA and J2EE", "18CS644");
+        GLOBAL.data.put("System Modelling and Simulation", "18CS645");
+        GLOBAL.data.put("Mobile Application Development", "18CS651");
+        GLOBAL.data.put("Introduction to Data Structures and Algorithms", "18CS652");
+        GLOBAL.data.put("Programming in JAVA", "18CS653");
+        GLOBAL.data.put("Introduction to Operating System", "18CS654");
+
+        //7th
+        GLOBAL.data.put("Artificial Intelligence and Machine Learning", "18CS71");
+        GLOBAL.data.put("Big Data Analytics", "18CS72");
+        GLOBAL.data.put("Artificial Intelligence and Machine Learning Laboratory", "18CSL76");
+        GLOBAL.data.put("Project Work Phase – 1 ", "18CSP77");
+        GLOBAL.data.put("Software Architecture and Design Patterns", "18CS731");
+        GLOBAL.data.put("High Performance Computing", "18CS732");
+        GLOBAL.data.put("Advanced Computer Architecture", "18CS733");
+        GLOBAL.data.put("User Interface Design", "18CS734");
+        GLOBAL.data.put("Digital Image Processing", "18CS741");
+        GLOBAL.data.put("Network management", "18CS742");
+        GLOBAL.data.put("Natural Language Processing", "18CS743");
+        GLOBAL.data.put("Cryptography", "18CS744");
+        GLOBAL.data.put("Robotic Process Automation Design & Development", "18CS745");
+        GLOBAL.data.put("Introduction to Big Data Analytics", "18CS751");
+        GLOBAL.data.put("Python Application Programming", "18CS752");
+        GLOBAL.data.put("Introduction to Artificial Intelligence", "18CS753");
+        GLOBAL.data.put("Introduction to Dot Net framework for Application Development", "18CS754");
 
 
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS81");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CSP83");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CSS84");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CSI85");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS821");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS822");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS823");
-        GLOBAL.SUBJECT_CODE_ARRAYLIST.add("18CS824");
+        //8th
+        GLOBAL.data.put("Internet of Things", "18CS81");
+        GLOBAL.data.put("Project Work Phase-2", "18CSP83");
+        GLOBAL.data.put("Technical Seminar", "18CSS84");
+        GLOBAL.data.put("Internship", "18CSI85");
+        GLOBAL.data.put("Mobile Computing", "18CS821");
+        GLOBAL.data.put("Storage Area Networks", "18CS822");
+        GLOBAL.data.put("NoSQL Database", "18CS823");
+        GLOBAL.data.put("Multicore Architecture and Programming", "18CS824");
+
 
 
         ArrayAdapter adapter = new
-                ArrayAdapter(this,android.R.layout.simple_list_item_1, GLOBAL.SUBJECT_CODE_ARRAYLIST);
+                ArrayAdapter(this,android.R.layout.simple_list_item_1, GLOBAL.data.values().toArray());
 
         actv.setAdapter(adapter);
         actv.setThreshold(1);
         actv.setAdapter(adapter);
+
+        actv.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                // TODO Auto-generated method stub
+                textView3.setText(GLOBAL.data.get("NoSQL Database"));
+                textView3.setText(getKeys(GLOBAL.data, actv.getText().toString()).toString());
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                // TODO Auto-generated method stub
+                textView3.setText("Choose Subject code");
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                // TODO Auto-generated method stub
+            }
+        });
 
         Dexter.withContext(context)
                 .withPermissions(
@@ -305,15 +319,27 @@ public class THomeActivity extends AppCompatActivity  {
 
 
     }
+    private static Set<String> getKeys(Map<String, String> map, String value) {
+
+        Set<String> result = new HashSet<>();
+        if (map.containsValue(value)) {
+            for (Map.Entry<String, String> entry : map.entrySet()) {
+                if (Objects.equals(entry.getValue(), value)) {
+                    result.add(entry.getKey());
+                }
+                // we can't compare like this, null will throws exception
+              /*(if (entry.getValue().equals(value)) {
+                  result.add(entry.getKey());
+              }*/
+            }
+        }
+        return result;
+    }
 
 
-
-
-
-
-
-
-
-
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        GLOBAL.data.clear();
+    }
 }
