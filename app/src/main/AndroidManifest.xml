@@ -65,6 +65,11 @@
             android:name=".teacher.Activities.Pdf_Creater"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.TransparentStatusBar" />
+
+        <activity
+            android:name=".teacher.Activities.Pdf_CreaterAll"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.TransparentStatusBar" />
     </application>
 
 </manifest>

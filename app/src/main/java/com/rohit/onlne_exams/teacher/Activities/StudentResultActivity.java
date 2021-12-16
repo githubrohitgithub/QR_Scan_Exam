@@ -1,22 +1,30 @@
 package com.rohit.onlne_exams.teacher.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+import com.rohit.onlne_exams.GLOBAL;
 import com.rohit.onlne_exams.R;
-import com.rohit.onlne_exams.adapers.ResultDataAdapter;
+import com.rohit.onlne_exams.adapers.RecyclerViewAdapter;
 import com.rohit.onlne_exams.adapers.ResultData;
+import com.rohit.onlne_exams.adapers.SwipeToDeleteCallback;
 import com.rohit.onlne_exams.network.RetrofitClient;
 import com.rohit.onlne_exams.teacher.ModelResponse.Result;
 import com.rohit.onlne_exams.teacher.ModelResponse.ResultResponse;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,11 +35,12 @@ public class StudentResultActivity extends AppCompatActivity {
 
 
 
-   public static ArrayList<ResultData> resultData =new ArrayList<ResultData>();
+
     List<Result> locationList;
     RecyclerView recyclerView;
-    ResultDataAdapter adapter;
+    RecyclerViewAdapter adapter;
     Button pdf;
+    CoordinatorLayout coordinatorLayout;;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,17 +48,28 @@ public class StudentResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_studentresult);
 
 
-        recyclerView = findViewById(R.id.recyclerview);
+        recyclerView = findViewById(R.id.recyclerView);
+        coordinatorLayout = findViewById(R.id.coordinatorLayout);
         pdf = findViewById(R.id.pdf);
-        adapter = new ResultDataAdapter(StudentResultActivity.this, resultData);
+        adapter = new RecyclerViewAdapter(GLOBAL.resultData);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+
+        enableSwipeToDeleteAndUndo();
 
 
         pdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),Pdf_Creater.class));
+
+
+
+                Intent intent = new Intent(view.getContext(), Pdf_CreaterAll.class);
+                startActivity(intent);
+
+
             }
         });
 
@@ -59,6 +79,40 @@ public class StudentResultActivity extends AppCompatActivity {
         callApi();
     }
 
+
+    private void enableSwipeToDeleteAndUndo() {
+        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(this) {
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+
+
+                final int position = viewHolder.getAdapterPosition();
+                final ResultData item = adapter.getData().get(position);
+
+                adapter.removeItem(position);
+                adapter.notifyDataSetChanged();
+
+
+                Snackbar snackbar = Snackbar
+                        .make(coordinatorLayout, "Item was removed from the list.", Snackbar.LENGTH_LONG);
+                snackbar.setAction("UNDO", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+//                        adapter.restoreItem(item, position);
+                        recyclerView.scrollToPosition(position);
+                    }
+                });
+
+                snackbar.setActionTextColor(Color.YELLOW);
+                snackbar.show();
+
+            }
+        };
+
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
+        itemTouchhelper.attachToRecyclerView(recyclerView);
+    }
 
     private void callApi() {
 
@@ -81,7 +135,7 @@ public class StudentResultActivity extends AppCompatActivity {
 
 
 
-                        resultData.add(new ResultData(data.getId(),data.getSub_code(),data.getSet_code(),data.getSreg_no(),data.getCorrect(),data.getWrong(),data.getTotal(),data.getAttempted(),data.getResult()));
+                        GLOBAL.resultData.add(new ResultData(data.getId(),data.getSub_code(),data.getSet_code(),data.getSreg_no(),data.getCorrect(),data.getWrong(),data.getTotal(),data.getAttempted(),data.getResult()));
 
                     }
 

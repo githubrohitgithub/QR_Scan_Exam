@@ -22,8 +22,9 @@ import com.hesa.pdfcreator.views.basic.PDFHorizontalView;
 import com.hesa.pdfcreator.views.basic.PDFImageView;
 import com.hesa.pdfcreator.views.basic.PDFLineSeparatorView;
 import com.hesa.pdfcreator.views.basic.PDFTextView;
+import com.rohit.onlne_exams.GLOBAL;
 import com.rohit.onlne_exams.R;
-
+import com.rohit.onlne_exams.adapers.ResultData;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -37,15 +38,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class Pdf_Creater extends PDFCreatorActivity {
+public class Pdf_CreaterAll extends PDFCreatorActivity {
 
-
-    String sub_code,set_code,regno,correct,wrong,total,attempted,result;
 
     Context context;
-
     String stringDate;
-
     String directory;
     String  pdf_saved_file_named;
     @Override
@@ -60,14 +57,6 @@ public class Pdf_Creater extends PDFCreatorActivity {
             getSupportActionBar().hide();
         }
 
-        sub_code=getIntent().getStringExtra("sub_code");
-        set_code=getIntent().getStringExtra("set_code");
-        regno=getIntent().getStringExtra("regno");
-        correct=getIntent().getStringExtra("correct");
-        wrong=getIntent().getStringExtra("wrong");
-        total=getIntent().getStringExtra("total");
-        attempted=getIntent().getStringExtra("attempted");
-        result=getIntent().getStringExtra("result");
 
 
 
@@ -77,7 +66,7 @@ public class Pdf_Creater extends PDFCreatorActivity {
 
         directory = getApplicationContext().getExternalFilesDir("").toString();
 
-        pdf_saved_file_named=regno+" Report "+formattedDate;
+        pdf_saved_file_named="All Report "+formattedDate;
 
 
         File file = new File(directory+pdf_saved_file_named);
@@ -179,7 +168,7 @@ public class Pdf_Creater extends PDFCreatorActivity {
 
 
         PDFTextView pdfCompanyNameView = new PDFTextView(getApplicationContext(), PDFTextView.PDF_TEXT_SIZE.HEADER);
-        pdfCompanyNameView.setText(regno+" Report"+"\n");
+        pdfCompanyNameView.setText("All Report"+"\n");
         pdfCompanyNameView.getView().setTypeface(pdfCompanyNameView.getView().getTypeface(), Typeface.BOLD);
         pdfBody.addView(pdfCompanyNameView);
         pdfCompanyNameView.getView().setGravity(Gravity.CENTER_HORIZONTAL);
@@ -196,52 +185,64 @@ public class Pdf_Creater extends PDFCreatorActivity {
 
 
 
+        for (ResultData data : GLOBAL.resultData)
+        {
+
+
+
+            PDFHorizontalView row3 = new PDFHorizontalView(getApplicationContext());
+            PDFTextView Tbbi = new PDFTextView(getApplicationContext(), PDFTextView.PDF_TEXT_SIZE.H2);
+            Tbbi.setText("Subject Code\n"+"Set Code\n"+"Reg No.\n"+"Correct\n"+"Wrong\n"+"Total\n"+"Attempted\n"+"Result\n");
+            Tbbi.setLayout(new LinearLayout.LayoutParams(
+                    0,
+                    LinearLayout.LayoutParams.MATCH_PARENT, 1));
+            Tbbi.getView().setGravity(Gravity.CENTER_VERTICAL);
+            Tbbi.getView().setTypeface(Tbbi.getView().getTypeface(), Typeface.BOLD);
+            row3.addView(Tbbi);
+            pdfBody.addView(row3);
+
+
+            PDFTextView space9 = new PDFTextView(getApplicationContext(), PDFTextView.PDF_TEXT_SIZE.H4);
+            space9.setText(" ");
+            pdfBody.addView(space9);
+            space9.getView().setGravity(Gravity.CENTER_HORIZONTAL);
+
+            PDFLineSeparatorView lineSeparatorView3 = new PDFLineSeparatorView(getApplicationContext()).setBackgroundColor(Color.BLACK);
+            pdfBody.addView(lineSeparatorView3);
 
 
 
 
 
-        PDFHorizontalView row3 = new PDFHorizontalView(getApplicationContext());
-        PDFTextView Tbbi = new PDFTextView(getApplicationContext(), PDFTextView.PDF_TEXT_SIZE.H2);
-        Tbbi.setText("Subject Code\n"+"Set Code\n"+"Reg No.\n"+"Correct\n"+"Wrong\n"+"Total\n"+"Attempted\n"+"Result\n");
-        Tbbi.setLayout(new LinearLayout.LayoutParams(
-                0,
-                LinearLayout.LayoutParams.MATCH_PARENT, 1));
-        Tbbi.getView().setGravity(Gravity.CENTER_VERTICAL);
-        Tbbi.getView().setTypeface(Tbbi.getView().getTypeface(), Typeface.BOLD);
-        row3.addView(Tbbi);
-        pdfBody.addView(row3);
-
-
-        PDFTextView bbi = new PDFTextView(getApplicationContext(), PDFTextView.PDF_TEXT_SIZE.H2);
-        bbi.setText(sub_code+"\n"+set_code+"\n"+regno+"\n"+correct+"\n"+wrong+"\n"+total+"\n"+attempted+"\n"+result+"\n");
-        bbi.setLayout(new LinearLayout.LayoutParams(
-                0,
-                LinearLayout.LayoutParams.MATCH_PARENT, 1));
-        bbi.getView().setGravity(Gravity.CENTER_VERTICAL);
+            PDFTextView bbi = new PDFTextView(getApplicationContext(), PDFTextView.PDF_TEXT_SIZE.H2);
+            bbi.setText(data.getSub_code()+"\n"+data.getSet_code()+"\n"+data.getSreg_no()+"\n"+data.getCorrect()+"\n"+data.getWrong()+"\n"+data.getTotal()+"\n"+data.getAttempted()+"\n"+data.getResult()+"\n");
+            bbi.setLayout(new LinearLayout.LayoutParams(
+                    0,
+                    LinearLayout.LayoutParams.MATCH_PARENT, 1));
+            bbi.getView().setGravity(Gravity.CENTER_VERTICAL);
 //        bbi.getView().setTypeface(bbi.getView().getTypeface(), Typeface.BOLD);
-        bbi.setLayout(new LinearLayout.LayoutParams(
-                0,
-                LinearLayout.LayoutParams.MATCH_PARENT, 1));
-        bbi.getView().setGravity(Gravity.END);
-        row3.addView(bbi);
+            bbi.setLayout(new LinearLayout.LayoutParams(
+                    0,
+                    LinearLayout.LayoutParams.MATCH_PARENT, 1));
+            bbi.getView().setGravity(Gravity.END);
+            row3.addView(bbi);
 
 
 
-        PDFTextView space9 = new PDFTextView(getApplicationContext(), PDFTextView.PDF_TEXT_SIZE.H4);
-        space9.setText(" ");
-        pdfBody.addView(space9);
-        space9.getView().setGravity(Gravity.CENTER_HORIZONTAL);
+            PDFTextView space10 = new PDFTextView(getApplicationContext(), PDFTextView.PDF_TEXT_SIZE.H4);
+            space10.setText(" ");
+            pdfBody.addView(space10);
+            space10.getView().setGravity(Gravity.CENTER_HORIZONTAL);
+
+            PDFLineSeparatorView lineSeparatorView4 = new PDFLineSeparatorView(getApplicationContext()).setBackgroundColor(Color.BLACK);
+            pdfBody.addView(lineSeparatorView4);
 
 
 
+        }
 
 
 
-
-
-        PDFLineSeparatorView lineSeparatorView3 = new PDFLineSeparatorView(getApplicationContext()).setBackgroundColor(Color.BLACK);
-        pdfBody.addView(lineSeparatorView3);
 
 
 
