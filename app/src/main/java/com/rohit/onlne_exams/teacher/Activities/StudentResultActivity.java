@@ -21,6 +21,7 @@ import com.rohit.onlne_exams.adapers.RecyclerViewAdapter;
 import com.rohit.onlne_exams.adapers.ResultData;
 import com.rohit.onlne_exams.adapers.SwipeToDeleteCallback;
 import com.rohit.onlne_exams.network.RetrofitClient;
+import com.rohit.onlne_exams.student.ModelResponse.SRegisterResponse;
 import com.rohit.onlne_exams.teacher.ModelResponse.Result;
 import com.rohit.onlne_exams.teacher.ModelResponse.ResultResponse;
 
@@ -89,22 +90,24 @@ public class StudentResultActivity extends AppCompatActivity {
                 final int position = viewHolder.getAdapterPosition();
                 final ResultData item = adapter.getData().get(position);
 
-                adapter.removeItem(position);
-                adapter.notifyDataSetChanged();
+
+                delete_result(position,item.getSreg_no());
+
+
 
 
                 Snackbar snackbar = Snackbar
                         .make(coordinatorLayout, "Item was removed from the list.", Snackbar.LENGTH_LONG);
-                snackbar.setAction("UNDO", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-//                        adapter.restoreItem(item, position);
-                        recyclerView.scrollToPosition(position);
-                    }
-                });
-
-                snackbar.setActionTextColor(Color.YELLOW);
+//                snackbar.setAction("UNDO", new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//
+////                        adapter.restoreItem(item, position);
+//                        recyclerView.scrollToPosition(position);
+//                    }
+//                });
+//
+//                snackbar.setActionTextColor(Color.YELLOW);
                 snackbar.show();
 
             }
@@ -112,6 +115,44 @@ public class StudentResultActivity extends AppCompatActivity {
 
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
         itemTouchhelper.attachToRecyclerView(recyclerView);
+    }
+
+    private void delete_result(int position, String sreg_no) {
+
+        Call<SRegisterResponse> call= RetrofitClient.getInstance().getApi().delete_result(sreg_no);
+
+        call.enqueue(new Callback<SRegisterResponse>() {
+            @Override
+            public void onResponse(Call<SRegisterResponse> call, retrofit2.Response<SRegisterResponse> response) {
+
+                if(response.isSuccessful()){
+
+
+
+                    if(response.code()==200){
+
+
+                        adapter.removeItem(position);
+                        adapter.notifyDataSetChanged();
+
+
+                    }
+
+
+
+                }else{
+
+                    Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SRegisterResponse> call, Throwable t) {
+
+                Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void callApi() {

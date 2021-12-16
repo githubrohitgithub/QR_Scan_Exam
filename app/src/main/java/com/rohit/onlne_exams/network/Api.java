@@ -157,6 +157,14 @@ public interface Api {
 
     );
 
+    @FormUrlEncoded
+    @POST("delete_result.php")
+    Call<SRegisterResponse> delete_result(
+
+            @Field("regno") String regno
+
+    );
+
 
 
 
